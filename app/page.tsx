@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function Home() {
-    return <div className="d-flex flex-col">
+    return <div className="flex flex-col">
       
     </div>;
 }
