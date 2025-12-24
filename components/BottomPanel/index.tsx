@@ -4,7 +4,7 @@ export const members = [{}];
 
 const BottomPanel = () => {
     return (
-        <ul className="flex flex-[0.45] p-0 m-0 list-none items-center justify-center gap-20"></ul>
+        <ul className="flex basis-[35%] p-0 m-0 list-none items-center justify-center gap-20"></ul>
     );
 };
 

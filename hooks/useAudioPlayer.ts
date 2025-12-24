@@ -9,11 +9,40 @@ export const useAudioPlayer = (src: string) => {
 
     // Инициализация аудио
     useEffect(() => {
-        console.log("кокоао");
 
         const audio = new Audio(src);
         audioRef.current = audio;
-        audioRef.current.play();
+        audioRef.current.play()
+
+        // События
+        const handleLoadedMetadata = () => {
+            setDuration(audio.duration);
+        };
+
+        const handleTimeUpdate = () => {
+            setCurrentTime(audio.currentTime);
+        };
+
+        const handleEnded = () => {
+            setIsPlaying(false);
+            setCurrentTime(0);
+        };
+
+
+        audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+        audio.addEventListener("timeupdate", handleTimeUpdate);
+        audio.addEventListener("ended", handleEnded);
+
+        // Очистка при размонтировании
+        return () => {
+            audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+            audio.removeEventListener("timeupdate", handleTimeUpdate);
+            audio.removeEventListener("ended", handleEnded);
+
+            audio.pause();
+            audio.currentTime = 0;
+            audio.src = "";
+        };
     }, [src]);
 
     // Воспроизведение/пауза

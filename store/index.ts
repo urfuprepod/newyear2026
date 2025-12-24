@@ -15,6 +15,7 @@ export interface IQuestion {
 export type GameStore = {
     currentTeam: number | null;
     teams: ITeam[];
+    readedQuestions: string[];
     currentQuestion: null | IQuestion;
     createTeam: (name: string) => void;
     makeQuestionRead: (question?: IQuestion) => void;

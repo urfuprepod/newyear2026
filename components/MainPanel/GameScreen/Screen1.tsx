@@ -6,8 +6,8 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
 const screens = [
-    <h1>Приветствуем на зимней серии игр Исторического факультета УрФУ</h1>,
-    <h1>Игра представлена кафедрой новой и ебейшей истории</h1>,
+    <h1 className="text-5xl text-center">Приветствуем на зимней серии игр Исторического факультета УрФУ</h1>,
+    <h1 className="text-5xl text-center">Игра представлена кафедрой новой и ебейшей истории</h1>,
     <Image
         src={"/kafedra.png"}
         alt="Описание"
@@ -21,30 +21,29 @@ const Screen1 = () => {
     const { setStep } = useNewYearStore();
     const [currentStep, setCurrentStep] = useState<number>(0);
     const timer = useRef<NodeJS.Timeout | null>(null);
-    const { togglePlay, stop } = useAudioPlayer("/opening.mp3");
+    const { stop } = useAudioPlayer("/opening.mp3");
+
+    useEffect(() => {
+        if (currentStep === screens.length) {
+            timer.current && clearTimeout(timer.current);
+            stop();
+            setStep();
+        }
+    }, [currentStep]);
 
     useEffect(() => {
         timer.current = setInterval(() => {
             setCurrentStep((prev) => {
-                if (prev === screens.length - 1) {
-                    setStep();
-                    return prev;
-                }
                 return prev + 1;
             });
         }, 10000);
 
         return () => {
             timer.current && clearTimeout(timer.current);
-            stop();
         };
     }, []);
 
-    return (
-        <div className="flex-1 relative w-full">
-            {screens[currentStep]}
-        </div>
-    );
+    return <>{screens?.[currentStep] ?? null}</>;
 };
 
 export default Screen1;
