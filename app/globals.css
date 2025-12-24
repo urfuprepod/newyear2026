@@ -28,11 +28,11 @@ body {
   background: url('../public/background.jpg') no-repeat 0 0 / 100% 100%;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 
   * {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
   }
 
   button {

@@ -1,16 +1,11 @@
-import React from 'react'
+import React from "react";
 
-export const members = [{
-    
-}]
-
+export const members = [{}];
 
 const BottomPanel = () => {
-  return (
-    <ul className='flex p-0 m-0 list-none items-center justify-center gap-20'>
-      
-    </ul>
-  )
-}
+    return (
+        <ul className="flex flex-[0.45] p-0 m-0 list-none items-center justify-center gap-20"></ul>
+    );
+};
 
-export default BottomPanel
+export default BottomPanel;
