@@ -19,7 +19,6 @@ const useGameStore: StateCreator<GameStore, [], [], GameStore> = (set) => ({
     },
     addPointsToTeam: () => {
         set((state) => {
-            console.log(state.currentTeam);
             if (state.currentTeam === null || state.currentQuestion === null)
                 return {};
             const clone = structuredClone(state.teams);
@@ -45,6 +44,9 @@ const useGameStore: StateCreator<GameStore, [], [], GameStore> = (set) => ({
                         variant: "end",
                         currentQuestion: null,
                         currentTeam: null,
+                        readedQuestions: state.readedQuestions.concat(
+                            state.currentQuestion!.title
+                        ),
                     };
                 }
                 return { currentTeam: (state.currentTeam ?? 0) + 1 };
@@ -54,6 +56,9 @@ const useGameStore: StateCreator<GameStore, [], [], GameStore> = (set) => ({
                     variant: "start",
                     currentQuestion: null,
                     currentTeam: null,
+                    readedQuestions: state.readedQuestions.concat(
+                        state.currentQuestion!.title
+                    ),
                 };
             }
             return { currentTeam: (state.currentTeam ?? 0) - 1 };
@@ -65,7 +70,7 @@ const useGameStore: StateCreator<GameStore, [], [], GameStore> = (set) => ({
             currentTeam: state.variant === "start" ? 0 : 1,
         }));
     },
-    step: 2,
+    step: -1,
     setStep: () => {
         set((state) => ({
             step: state.step + 1,

@@ -28,7 +28,7 @@ const Sidebar = () => {
                         width={250}
                         height={160}
                         alt="avatar"
-                        src="/avatar.jpg"
+                        src="/lorem.png"
                     />
                 </div>
 

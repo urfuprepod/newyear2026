@@ -18,8 +18,6 @@ const GameScreen = () => {
 
     useEffect(() => {
         if (ref.current) {
-            console.log(ref.current);
-            console.log(ref.current?.clientWidth);
             setContainerWidth(ref.current.clientWidth);
         }
     }, []);

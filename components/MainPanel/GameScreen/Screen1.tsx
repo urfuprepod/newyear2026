@@ -6,8 +6,12 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
 const screens = [
-    <h1 className="text-5xl text-center">Приветствуем на зимней серии игр Исторического факультета УрФУ</h1>,
-    <h1 className="text-5xl text-center">Игра представлена кафедрой новой и ебейшей истории</h1>,
+    <h1 className="text-5xl text-center">
+        Приветствуем на зимней серии игр Исторического факультета УрФУ
+    </h1>,
+    <h1 className="text-5xl text-center">
+        Игра представлена кафедрой новой и ебейшей истории
+    </h1>,
     <Image
         src={"/kafedra.png"}
         alt="Описание"
@@ -36,7 +40,7 @@ const Screen1 = () => {
             setCurrentStep((prev) => {
                 return prev + 1;
             });
-        }, 1000);
+        }, 10000);
 
         return () => {
             timer.current && clearTimeout(timer.current);

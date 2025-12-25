@@ -53,7 +53,6 @@ const Screen2: FC<Props> = ({ parentWidth }) => {
         setTimeout(() => {
             // фиксируем победителя
             makeQuestionRead(questions[winner % questions.length]);
-            console.log(questions[winner % questions.length]);
             setSpinning(false);
         }, 5000);
     };
@@ -71,7 +70,7 @@ const Screen2: FC<Props> = ({ parentWidth }) => {
                 makeQuestionRead(freeQuestions[0]);
             }, 1000);
         }
-    }, [parentWidth, isPlaying]);
+    }, [isPlaying]);
 
     if (parentWidth === 0) return null;
     return (

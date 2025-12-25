@@ -21,7 +21,7 @@ const MemberCard: FC<Props> = (props) => {
         <div className={memberCard}>
             <div className="relative w-[200px] h-[140px]">
                 <Image
-                    src="/avatar.jpg"
+                    src="/lorem.png"
                     fill
                     alt="Picture"
                     className="object-cover"

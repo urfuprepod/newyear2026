@@ -16,7 +16,7 @@ const BottomPanel = () => {
                     key={index}
                     id={index}
                     sum={el.points}
-                    avatarUrl="/avatar.jpg"
+                    avatarUrl="/lorem.png"
                 />
             ))}
         </ul>
