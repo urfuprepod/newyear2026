@@ -19,7 +19,7 @@ const Screen2: FC<Props> = ({ parentWidth }) => {
 
     const parentWidthWithoutPadding = parentWidth - 15;
 
-    const { makeQuestionRead, readedQuestions } = useNewYearStore();
+    const { makeQuestionRead, readedQuestions, setStep } = useNewYearStore();
     const freeQuestions = useMemo(() => {
         return questions.filter(
             ({ title }) => !readedQuestions.includes(title)
@@ -60,6 +60,10 @@ const Screen2: FC<Props> = ({ parentWidth }) => {
 
     useEffect(() => {
         if (!isPlaying) return;
+        if (freeQuestions.length === 0) {
+            setStep();
+            return;
+        }
         if (freeQuestions.length > 1) {
             spin();
         } else {

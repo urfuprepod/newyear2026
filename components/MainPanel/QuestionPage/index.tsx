@@ -8,7 +8,7 @@ const QuestionPage = () => {
 
     if (!currentQuestion) return null;
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 min-w-[50%]">
             <h2 className="text-5xl text-center">{currentQuestion.text}</h2>
             <div className="flex gap-3 [&_*]:flex-1 items-center">
                 <button onClick={addPointsToTeam} className="bg-green-950 py-4 px=3">

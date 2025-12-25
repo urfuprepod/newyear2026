@@ -26,11 +26,6 @@ export type GameStore = {
     addPointsToTeam: () => void;
 };
 
-// export type StepStore = {
-//     step: number;
-//     setStep: () => void;
-// };
-
 export const useNewYearStore = create<GameStore>((...a) => ({
     ...useGameStore(...a),
     // ...useStepStore(...a),

@@ -6,8 +6,9 @@ import Screen1 from "./Screen1";
 import Screen2 from "./Screen2";
 import Sidebar from "../Sidebar";
 import QuestionPage from "../QuestionPage";
+import Screen3 from "./Screen3";
 
-const screens = [Screen1, Screen2];
+const screens = [Screen1, Screen2, Screen3];
 
 const GameScreen = () => {
     const { step, currentQuestion } = useNewYearStore();

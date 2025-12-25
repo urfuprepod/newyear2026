@@ -65,7 +65,7 @@ const useGameStore: StateCreator<GameStore, [], [], GameStore> = (set) => ({
             currentTeam: state.variant === "start" ? 0 : 1,
         }));
     },
-    step: -1,
+    step: 2,
     setStep: () => {
         set((state) => ({
             step: state.step + 1,
