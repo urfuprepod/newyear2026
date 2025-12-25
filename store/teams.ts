@@ -74,6 +74,7 @@ const useGameStore: StateCreator<GameStore, [], [], GameStore> = (set) => ({
     setStep: () => {
         set((state) => ({
             step: state.step + 1,
+            readedQuestions: []
         }));
     },
 });

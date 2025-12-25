@@ -17,7 +17,7 @@ const Sidebar = () => {
     return (
         <div className="flex flex-col gap-[10px] mx-[5px] justify-end">
             {message && (
-                <div className="text-white bg-[#1634cf] p-[7px] rounded-3xl justify-center items-center">
+                <div className="text-white bg-[#1634cf] p-[7px] rounded-3xl flex justify-center items-center">
                     <span className="text-3xl text-center">{message}</span>
                 </div>
             )}
@@ -28,7 +28,7 @@ const Sidebar = () => {
                         width={250}
                         height={160}
                         alt="avatar"
-                        src="/lorem.png"
+                        src="/avatar.jpg"
                     />
                 </div>
 

@@ -33,6 +33,8 @@ body {
 
   * {
     box-sizing: border-box;
+    line-height: 1.25 !important;
+    user-select: none;
   }
 
   button {

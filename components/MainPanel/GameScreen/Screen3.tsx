@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
 import { IQuestion, useNewYearStore } from "@/store";
-import React from "react";
+import React, { useState } from "react";
 import SvoyakCell from "../SvoyakCell";
 
 const questionsConfig: { questions: IQuestion[]; header: string }[] = [
@@ -38,33 +38,46 @@ const questionsConfig: { questions: IQuestion[]; header: string }[] = [
 ];
 
 const Screen3 = () => {
-
-    const {readedQuestions} = useNewYearStore();
+    const { readedQuestions } = useNewYearStore();
+    const [isPlaying, setIsPlaying] = useState<boolean>(
+        !!readedQuestions.length
+    );
 
     return (
         <div
             className={`size-full grid grid-cols-1 grid-rows-${questionsConfig.length}`}
         >
-            {questionsConfig.map((row, index) => (
-                <div
-                    style={{
-                        gridTemplateColumns: `2fr repeat(${row.questions.length}, 1fr)`,
-                    }}
-                    className="grid"
-                    key={index}
+            {!isPlaying ? (
+                <h2
+                    onClick={() => setIsPlaying(true)}
+                    className="text-3xl cursor-pointer text-center"
                 >
-                    <div className="border border border-gray-500 flex items-center justify-center">
-                        {row.header}
-                    </div>
-                    {row.questions.map((el, index) => (
-                        <SvoyakCell
-                            themeTitle={row.header}
+                    Раунд 2 <br /> "Своя игра"
+                </h2>
+            ) : (
+                <>
+                    {questionsConfig.map((row, index) => (
+                        <div
+                            style={{
+                                gridTemplateColumns: `2fr repeat(${row.questions.length}, 1fr)`,
+                            }}
+                            className="grid"
                             key={index}
-                            question={el}
-                        />
+                        >
+                            <div className="border border border-gray-500 flex items-center justify-center">
+                                {row.header}
+                            </div>
+                            {row.questions.map((el, index) => (
+                                <SvoyakCell
+                                    themeTitle={row.header}
+                                    key={index}
+                                    question={el}
+                                />
+                            ))}
+                        </div>
                     ))}
-                </div>
-            ))}
+                </>
+            )}
         </div>
     );
 };
