@@ -36,7 +36,7 @@ const Screen1 = () => {
             setCurrentStep((prev) => {
                 return prev + 1;
             });
-        }, 10000);
+        }, 1000);
 
         return () => {
             timer.current && clearTimeout(timer.current);

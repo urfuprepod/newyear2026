@@ -19,10 +19,17 @@ const MemberCard: FC<Props> = (props) => {
 
     return (
         <div className={memberCard}>
-            <Image alt={name} src={avatarUrl} height={140} />
-            <span className={textStyle}></span>
+            <div className="relative w-[200px] h-[140px]">
+                <Image
+                    src="/avatar.jpg"
+                    fill
+                    alt="Picture"
+                    className="object-cover"
+                />
+            </div>
+            <span className={textStyle}>{name}</span>
 
-            <div className="border-2 border-solid border-[#14183e] bg-[#05061f]">
+            <div className="border-2 border-solid text-center border-[#14183e] bg-[#05061f]">
                 <span className={textStyle}>{sum}</span>
             </div>
         </div>

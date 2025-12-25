@@ -1,7 +1,6 @@
 "use client";
 
 import { useNewYearStore } from "@/store";
-import React from "react";
 
 const QuestionPage = () => {
     const { currentQuestion, changeTeamOrCloseQuestion, addPointsToTeam } =
@@ -12,10 +11,10 @@ const QuestionPage = () => {
         <div className="flex flex-col gap-4">
             <h2 className="text-5xl text-center">{currentQuestion.text}</h2>
             <div className="flex gap-3 [&_*]:flex-1 items-center">
-                <button onClick={addPointsToTeam} className="bg-green">
+                <button onClick={addPointsToTeam} className="bg-green-950 py-4 px=3">
                     Да
                 </button>
-                <button onClick={changeTeamOrCloseQuestion} className="bg-red">
+                <button onClick={changeTeamOrCloseQuestion} className="bg-red-950 py-4 px=3">
                     Нет
                 </button>
             </div>

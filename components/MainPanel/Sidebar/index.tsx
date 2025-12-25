@@ -8,7 +8,7 @@ const Sidebar = () => {
     const { currentTeam, teams } = useNewYearStore();
 
     const message = useMemo(() => {
-        if (!currentTeam) return "";
+        if (currentTeam === null) return "";
         const actualTeamName = teams[currentTeam]?.name;
         if (!actualTeamName) return "";
         return `${actualTeamName}, ваш ответ...`;
