@@ -17,13 +17,20 @@ const useGameStore: StateCreator<GameStore, [], [], GameStore> = (set) => ({
             };
         });
     },
-    addPointsToTeam: (id: number, points: number) => {
+    addPointsToTeam: () => {
         set((state) => {
+            if (state.currentTeam === null || state.currentQuestion === null)
+                return {};
             const clone = structuredClone(state.teams);
-            const team = clone.find((_, index) => index === id);
+            const team = clone.find((_, index) => index === state.currentTeam);
             if (!team) return {};
-            team.points += points;
-            return { teams: clone };
+            team.points += state.currentQuestion.price;
+            return {
+                teams: clone,
+                variant: state.variant === "end" ? "start" : "end",
+                currentTeam: null,
+                currentQuestion: null
+            };
         });
     },
     changeTeamOrCloseQuestion: () => {

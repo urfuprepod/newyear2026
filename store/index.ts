@@ -22,6 +22,8 @@ export type GameStore = {
     variant: "start" | "end";
     step: number;
     setStep: () => void;
+    changeTeamOrCloseQuestion: () => void;
+    addPointsToTeam: () => void;
 };
 
 // export type StepStore = {
