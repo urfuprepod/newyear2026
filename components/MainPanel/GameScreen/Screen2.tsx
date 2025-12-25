@@ -65,8 +65,6 @@ const Screen2: FC<Props> = ({ parentWidth }) => {
     const trackRef = useRef<HTMLDivElement>(null);
     const [spinning, setSpinning] = useState(false);
 
-    const { stop } = useAudioPlayer("/volchok.mp3");
-
     const parentWidthWithoutPadding = parentWidth - 15;
 
     const { makeQuestionRead, readedQuestions, setStep } = useNewYearStore();
@@ -77,6 +75,11 @@ const Screen2: FC<Props> = ({ parentWidth }) => {
     }, [readedQuestions]);
     const [isPlaying, setIsPlaying] = useState<boolean>(
         !!readedQuestions.length
+    );
+
+    const { stop } = useAudioPlayer(
+        "/volchok.mp3",
+        !isPlaying || freeQuestions.length === 0
     );
 
     // делаем длинную ленту
@@ -104,16 +107,15 @@ const Screen2: FC<Props> = ({ parentWidth }) => {
             // фиксируем победителя
             makeQuestionRead(freeQuestions[winner % freeQuestions.length]);
             setSpinning(false);
+            stop();
         }, 5000);
     };
 
     useEffect(() => {
         if (!isPlaying) {
-            stop();
-            return
+            return;
         }
         if (freeQuestions.length === 0) {
-            stop();
             setStep();
             return;
         }
@@ -122,6 +124,7 @@ const Screen2: FC<Props> = ({ parentWidth }) => {
         } else {
             setTimeout(() => {
                 makeQuestionRead(freeQuestions[0]);
+                stop();
             }, 1000);
         }
     }, [isPlaying]);

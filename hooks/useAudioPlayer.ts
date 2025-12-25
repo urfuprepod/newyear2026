@@ -1,7 +1,7 @@
 // Кастомный хук
 import { useEffect, useRef, useState, useCallback } from "react";
 
-export const useAudioPlayer = (src: string) => {
+export const useAudioPlayer = (src: string, block = false) => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
@@ -9,10 +9,11 @@ export const useAudioPlayer = (src: string) => {
 
     // Инициализация аудио
     useEffect(() => {
-
         const audio = new Audio(src);
         audioRef.current = audio;
-        audioRef.current.play()
+        if (!block) {
+            audioRef.current.play();
+        }
 
         // События
         const handleLoadedMetadata = () => {
@@ -27,7 +28,6 @@ export const useAudioPlayer = (src: string) => {
             setIsPlaying(false);
             setCurrentTime(0);
         };
-
 
         audio.addEventListener("loadedmetadata", handleLoadedMetadata);
         audio.addEventListener("timeupdate", handleTimeUpdate);
