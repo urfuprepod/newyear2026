@@ -3,7 +3,7 @@
 import { useNewYearStore } from "@/store";
 import MemberCard from "../MemberCard";
 
-export const members = [{}];
+export const members = ['/platin.jpg', '/team1.jpeg'];
 
 const BottomPanel = () => {
     const { teams } = useNewYearStore();
@@ -16,7 +16,7 @@ const BottomPanel = () => {
                     key={index}
                     id={index}
                     sum={el.points}
-                    avatarUrl="/lorem.png"
+                    avatarUrl={members[index]}
                 />
             ))}
         </ul>

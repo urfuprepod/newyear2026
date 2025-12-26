@@ -19,12 +19,12 @@ const MemberCard: FC<Props> = (props) => {
 
     return (
         <div className={memberCard}>
-            <div className="relative w-[200px] h-[140px]">
+            <div className="relative w-[200px] h-[155px]">
                 <Image
-                    src="/lorem.png"
+                    src={avatarUrl}
                     fill
                     alt="Picture"
-                    className="object-cover"
+                    className="object-cover object-top"
                 />
             </div>
             <span className={textStyle}>{name}</span>
